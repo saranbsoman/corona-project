@@ -1,0 +1,22 @@
+<?php
+include_once("classes/userclass.php");
+include_once("settings/settings.php");	
+$obj=new userclass();
+if(isset($_POST["hide"])AND($_POST["hide"])=='h')
+{
+	if(isset($_POST["district"])AND($_POST["district"])!=null)
+	{
+		if(isset($_POST["taluk"])AND($_POST["taluk"])!=null)
+		{
+			if(isset($_POST["panchayath"])AND($_POST["panchayath"])!=null)
+			{
+				$district=trim($_POST["district"]);
+				$taluk=trim($_POST["taluk"]);
+				$panchayath=trim($_POST["panchayath"]);
+				$obj->shop($district,$taluk,$panchayath);
+			}
+		}		
+	}
+}	
+$smartyObj->display('search.tpl');
+?>
